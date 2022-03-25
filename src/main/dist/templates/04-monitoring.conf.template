@@ -1,0 +1,23 @@
+server {
+    listen          ${J3_MONITORING_PORT};
+    server_name     _;
+    access_log off;
+
+    location ~* ^/healthz?$ {
+        default_type    application/json;
+        return 200      '{"status":"UP"}';
+    }
+
+    location ~* ^/info?$ {
+        default_type    application/json;
+        return 200      '{"artifact":"$j3_info_artifact","group":"$j3_info_group","name":"$j3_info_name","version":"$j3_info_version","irn":"$j3_irn"}';
+    }
+    
+    location = /stub_status {
+        stub_status;
+    }
+
+    location / {
+		return 404;
+    }
+}

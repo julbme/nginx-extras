@@ -1,0 +1,28 @@
+release:
+  github:
+    overwrite: true
+    changelog:
+      formatted: ALWAYS
+      preset: conventional-commits
+      links: true
+      contributors:
+        format: '- {{contributorName}} ({{contributorUsernameAsLink}})'
+
+signing:
+  active: ALWAYS
+  armored: true
+    
+announce:
+  twitter:
+    active: RELEASE
+    status: '🚀 NGinx extras {{projectVersion}} has been released! {{releaseNotesUrl}}'
+
+files:
+  active: RELEASE
+  artifacts:
+    - path: target/{{ projectName }}-{{ projectVersion }}.tar
+    - path: target/{{ projectName }}-{{ projectVersion }}.tar.bz2
+    - path: target/{{ projectName }}-{{ projectVersion }}.tar.gz
+    - path: target/{{ projectName }}-{{ projectVersion }}.tar.snappy
+    - path: target/{{ projectName }}-{{ projectVersion }}.tar.xz
+    - path: target/{{ projectName }}-{{ projectVersion }}.zip
